@@ -1,18 +1,4 @@
 #!/bin/sh
-
-: <<-'EOF'
-Copyright 2017 Xingwang Liao <kuoruan@gmail.com>
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-	http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-EOF
-
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Haproxy-lkl 服务名称
@@ -20,8 +6,8 @@ SERVICE_NAME='haproxy-lkl'
 # Haproxy-lkl 默认安装路径，修改之后需要同时修改服务启动文件
 HAPROXY_LKL_DIR="/usr/local/$SERVICE_NAME"
 
-BASE_URL='https://github.com/kuoruan/shell-scripts/raw/master/ovz-bbr'
-HAPROXY_BIN_URL="${BASE_URL}/bin/haproxy.linux2628_x86_64"
+BASE_URL='https://github.com/brick2008/bbr/raw/master'
+HAPROXY_BIN_URL="${BASE_URL}/bin/haproxy-v1.7.8"
 HAPROXY_LKL_BIN_URL="${BASE_URL}/bin/haproxy-lkl.sh"
 HAPROXY_LKL_SERVICE_FILE_DEBIAN_URL="${BASE_URL}/startup/haproxy-lkl.init.debain"
 HAPROXY_LKL_SERVICE_FILE_REDHAT_URL="${BASE_URL}/startup/haproxy-lkl.init.redhat"
@@ -35,15 +21,11 @@ ACCELERATE_PORT=
 clear
 
 cat >&2 <<-'EOF'
-#######################################################
-# OpenVZ BBR 一键安装脚本                             #
-# 该脚本用于在 OpenVZ 服务器上安装配置 Google BBR     #
-# 脚本作者: Xingwang Liao <kuoruan@gmail.com>         #
-# 作者博客: https://blog.kuoruan.com/                 #
-# Github: https://github.com/kuoruan/shell-scripts    #
-# QQ交流群: 43391448, 68133628                        #
-#           633945405                                 #
-#######################################################
+###############################################
+# 作者: Xingwang Liao <kuoruan@gmail.com> 
+# 修改：brick2008
+# github.com/brick2008/bbr
+###############################################
 EOF
 
 command_exists() {
