@@ -25,9 +25,9 @@ fi
 [ ${NETWORKING} = "no" ] && exit 0
 
 BASENAME=haproxy-lkl
-HAPROXY_LKL_DIR=/usr/local/$BASENAME
-HAPROXY=${HAPROXY_LKL_DIR}/sbin/haproxy
-HAPROXY_LKL=${HAPROXY_LKL_DIR}/sbin/$BASENAME
+HAPROXY_LKL_DIR=/usr/local/sbin
+HAPROXY=${HAPROXY_LKL_DIR}/haproxy
+HAPROXY_LKL=${HAPROXY_LKL_DIR}/$BASENAME
 
 PIDFILE=/var/run/${BASENAME}.pid
 
