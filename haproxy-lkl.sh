@@ -1,24 +1,11 @@
 #!/bin/sh
 
-: <<-'EOF'
-Copyright 2017 Xingwang Liao <kuoruan@gmail.com>
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-	http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-EOF
-
 INTERFACE='venet0'
-HAPROXY_LKL_DIR='/usr/local/haproxy-lkl'
+HAPROXY_LKL_DIR='/usr/local/sbin'
 LKL_TAP_NAME='lkl'
 LKL_IN_CHAIN_NAME='LKL_IN'
 
-HAPROXY_CFG_FILE="${HAPROXY_LKL_DIR}/etc/haproxy.cfg"
+HAPROXY_CFG_FILE="${HAPROXY_LKL_DIR}/haproxy.cfg"
 PIDFILE=
 LOGFILE='/dev/null'
 
@@ -141,7 +128,7 @@ set_network() {
 }
 
 generate_config() {
-	local port_rules_file="${HAPROXY_LKL_DIR}/etc/port-rules"
+	local port_rules_file="${HAPROXY_LKL_DIR}/port-rules"
 
 	if [ ! -r "$port_rules_file" ]; then
 		cat >&2 <<-EOF
@@ -185,9 +172,9 @@ generate_config() {
 	    group haproxy
 	defaults
 	    mode tcp
-	    timeout connect 5s
-	    timeout client 30s
-	    timeout server 30s
+	    timeout connect 5000ms
+	    timeout client 50000ms
+	    timeout server 50000ms
 	backend local
 	    server srv 10.0.0.1
 	EOF
@@ -258,8 +245,8 @@ generate_config() {
 }
 
 start_haproxy_lkl() {
-	local haproxy_bin="${HAPROXY_LKL_DIR}/sbin/haproxy"
-	local lkl_lib="${HAPROXY_LKL_DIR}/lib64/liblkl-hijack.so"
+	local haproxy_bin="${HAPROXY_LKL_DIR}/haproxy"
+	local lkl_lib="${HAPROXY_LKL_DIR}/liblkl-hijack.so"
 
 	if [ ! -f "$haproxy_bin" ]; then
 		cat >&2 <<-EOF

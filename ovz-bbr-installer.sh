@@ -1,18 +1,19 @@
 #!/bin/sh
+
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Haproxy-lkl 服务名称
 SERVICE_NAME='haproxy-lkl'
 # Haproxy-lkl 默认安装路径，修改之后需要同时修改服务启动文件
-HAPROXY_LKL_DIR="/usr/local/$SERVICE_NAME"
+HAPROXY_LKL_DIR="/usr/local/sbin"
 
 BASE_URL='https://github.com/brick2008/bbr/raw/master'
-HAPROXY_BIN_URL="${BASE_URL}/bin/haproxy-v1.7.8"
-HAPROXY_LKL_BIN_URL="${BASE_URL}/bin/haproxy-lkl.sh"
+HAPROXY_BIN_URL="${BASE_URL}/haproxy-v1.7.8"
+HAPROXY_LKL_BIN_URL="${BASE_URL}/haproxy-lkl.sh"
 HAPROXY_LKL_SERVICE_FILE_DEBIAN_URL="${BASE_URL}/startup/haproxy-lkl.init.debain"
 HAPROXY_LKL_SERVICE_FILE_REDHAT_URL="${BASE_URL}/startup/haproxy-lkl.init.redhat"
 HAPROXY_LKL_SYSTEMD_FILE_URL="${BASE_URL}/startup/haproxy-lkl.systemd"
-LKL_LIB_URL="${BASE_URL}/lib64/liblkl-hijack.so-20170724"
+LKL_LIB_URL="${BASE_URL}/liblkl-hijack.so-20170724"
 LKL_LIB_MD5='b50fc6a7ccfc70c76f44506814e7e18b'
 
 # 需要 BBR 加速的端口
