@@ -1,5 +1,9 @@
 #!/bin/sh
 
+: <<-'EOF'
+Copyright 2017 Xingwang Liao <kuoruan@gmail.com>
+EOF
+
 INTERFACE='venet0'
 HAPROXY_LKL_DIR='/usr/local/sbin'
 LKL_TAP_NAME='lkl'
